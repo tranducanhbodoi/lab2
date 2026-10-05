@@ -1,58 +1,65 @@
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
-function MovieDetail({ movie, show, onHide, onToggleFavorite }) {
+function MovieDetail({ movie, onClose, onToggleFavorite }) {
     if (!movie) return null;
 
     return (
-        <Modal show={show} onHide={onHide} centered>
-            <Modal.Header closeButton>
-                <Modal.Title className="fw-bold fs-5">
-                    {movie.title} <span className="text-muted fw-normal">({movie.year})</span>
-                </Modal.Title>
-            </Modal.Header>
-
-            <Modal.Body>
-                <div className="mb-2">
-                    <strong>Thể loại: </strong>
-                    <span>{movie.genre}</span>
-                </div>
-
-                <div className="mb-2">
-                    <strong>Điểm đánh giá: </strong>
-                    <span>{movie.rating}/10</span>
-                </div>
-
-                {movie.duration && (
-                    <div className="mb-2">
-                        <strong>Thời lượng: </strong>
-                        <span>{movie.duration} phút</span>
-                    </div>
+        <Card className="p-3 position-sticky" style={{ top: '20px' }}>
+            <div className="d-flex justify-content-between align-items-start mb-3">
+                <h5 className="fw-bold mb-0">
+                    {movie.title} <span className="text-muted fw-normal fs-6">({movie.year})</span>
+                </h5>
+                {onClose && (
+                    <Button
+                        variant="close"
+                        aria-label="Close"
+                        onClick={onClose}
+                    />
                 )}
+            </div>
 
+            <div className="mb-2">
+                <strong>Genre: </strong>
+                <span>{movie.genre}</span>
+            </div>
+
+            <div className="mb-2">
+                <strong>Rating: </strong>
+                <span>{movie.rating}/10</span>
+            </div>
+
+            {movie.duration && (
                 <div className="mb-2">
-                    <strong>Đạo diễn: </strong>
-                    <span>{movie.director}</span>
+                    <strong>Duration: </strong>
+                    <span>{movie.duration} mins</span>
                 </div>
+            )}
 
-                <div>
-                    <strong>Nội dung tóm tắt: </strong>
-                    <p className="text-muted mt-1 mb-0">{movie.description}</p>
-                </div>
-            </Modal.Body>
+            <div className="mb-2">
+                <strong>Director: </strong>
+                <span>{movie.director}</span>
+            </div>
 
-            <Modal.Footer>
+            <div className="mb-3">
+                <strong>Description: </strong>
+                <p className="text-muted mt-1 mb-0">{movie.description}</p>
+            </div>
+
+            <div className="d-flex gap-2">
                 <Button
+                    size="sm"
                     variant={movie.favorite ? 'danger' : 'outline-danger'}
-                    className="me-auto"
                     onClick={() => onToggleFavorite(movie.id)}
                 >
-                    {movie.favorite ? 'Đã thích' : 'Yêu thích'}
+                    {movie.favorite ? 'Favorited' : 'Favorite'}
                 </Button>
-                <Button variant="secondary" onClick={onHide}>
-                    Đóng
-                </Button>
-            </Modal.Footer>
-        </Modal>
+                {onClose && (
+                    <Button size="sm" variant="secondary" onClick={onClose}>
+                        Close
+                    </Button>
+                )}
+            </div>
+        </Card>
     );
 }
 

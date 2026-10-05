@@ -5,7 +5,7 @@ function SearchBar({ search, setSearch }) {
         <Form.Control
             className="mb-3"
             type="text"
-            placeholder="Tìm kiếm phim theo tên..."
+            placeholder="Search movies by title..."
             value={search}
             onChange={(event) => setSearch(event.target.value)}
         />

@@ -5,10 +5,9 @@ function Header() {
     const { theme, toggleTheme } = useTheme();
 
     return (
-        <div className="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+        <div className="d-flex justify-content-between align-items-center mb-3">
             <div>
-                <h3 className="m-0 fw-bold">Quản lý phim</h3>
-                <small className="text-muted">Danh sách và tìm kiếm phim</small>
+                <h3 className="m-0 fw-bold">Mini Movie Manager</h3>
             </div>
 
             <Button
@@ -16,7 +15,7 @@ function Header() {
                 size="sm"
                 onClick={toggleTheme}
             >
-                {theme === 'light' ? 'Giao diện tối' : 'Giao diện sáng'}
+                {theme === 'light' ? 'Dark' : 'Light'}
             </Button>
         </div>
     );

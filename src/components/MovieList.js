@@ -1,9 +1,9 @@
 import { ListGroup } from 'react-bootstrap';
 import MovieItem from './MovieItem';
 
-function MovieList({ movies, onToggleFavorite, onViewDetail }) {
+function MovieList({ movies, selectedMovieId, onToggleFavorite, onViewDetail }) {
     if (movies.length === 0) {
-        return <p className="text-muted text-center py-4">Không tìm thấy phim nào phù hợp.</p>;
+        return <p className="text-muted text-center py-4">No movies found.</p>;
     }
 
     return (
@@ -12,6 +12,7 @@ function MovieList({ movies, onToggleFavorite, onViewDetail }) {
                 <MovieItem
                     key={movie.id}
                     movie={movie}
+                    isSelected={movie.id === selectedMovieId}
                     onToggleFavorite={onToggleFavorite}
                     onViewDetail={onViewDetail}
                 />

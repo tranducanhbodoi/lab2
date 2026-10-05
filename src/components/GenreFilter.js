@@ -6,7 +6,7 @@ function GenreFilter({ genres, genre, setGenre }) {
             value={genre}
             onChange={(event) => setGenre(event.target.value)}
         >
-            <option value="All">Tất cả thể loại</option>
+            <option value="All">All Genres</option>
             {genres.map((item) => (
                 <option key={item} value={item}>
                     {item}
