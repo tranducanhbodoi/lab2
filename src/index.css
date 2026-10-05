@@ -1,0 +1,10 @@
+/* Giao diện đơn giản sử dụng React Bootstrap */
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.movie-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
